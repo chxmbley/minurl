@@ -8,6 +8,7 @@ Clone this project and use it to create your own Next.js project.
 ```bash
 git clone --depth=1 https://github.com/jdchum/nextjs-boilerplate.git my-next-project
 cd my-next-project
+git remote rm origin
 npm install
 ```
 
