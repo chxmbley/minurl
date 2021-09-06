@@ -12,6 +12,20 @@ git remote rm origin
 npm install
 ```
 
+Optionally, add this function to your shell startup script (`~/.zshrc` or `~/.bashrc`) to automate the above process:
+
+```bash
+nextapp() # Call this function whatever you like
+{
+  git clone --depth=1 https://github.com/jdchum/nextjs-boilerplate.git $1
+  cd $1
+  git remote rm origin
+  npm install
+}
+```
+
+Now you can initialize a Next.js app based on this boilerplate with `nextapp my-next-app` 🚀
+
 ## TODO
 
 - [ ] Testing configuration
