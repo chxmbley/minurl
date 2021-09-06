@@ -30,6 +30,7 @@ Now you can initialize a Next.js app based on this boilerplate with `nextapp my-
 
 - [ ] Testing configuration
 - [ ] Dockerfile
+- [ ] [Optimize Tailwind for production](https://tailwindcss.com/docs/optimizing-for-production)
 - [ ] Better documentation
 
 ## Features
@@ -38,6 +39,7 @@ Now you can initialize a Next.js app based on this boilerplate with `nextapp my-
 - 🎨 Sass
 - 🖥 ESLint
 - 👩‍🎨 Stylelint
+- ✈️ Tailwind
 - 💅 Prettier
 - 🗂 Sensible file structure
 
@@ -74,3 +76,13 @@ src/
 │  │  │  ├─ subcomponent.module.scss
 
 ```
+
+## Using Tailwind
+
+By default, Tailwind CSS is imported in `src/styles/globals.scss`, which itself is imported in
+`src/pages/_app.page.tsx`. Tailwind classes are available globally. Optionally, custom CSS classes
+can be extended using Tailwind using the `@apply` directive ([see Tailwind documentation](https://tailwindcss.com/docs/functions-and-directives#apply)).
+
+To build an app without custom CSS, delete the default stylesheets (`src/styles/*` and remove references to those files. Then add `import 'tailwindcss/tailwind.css'` to the top
+of `src/pages/_app.page.tsx`. Tailwind CSS classes will be available globally without the need for additional
+stylesheets.
