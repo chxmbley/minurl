@@ -93,3 +93,9 @@ stylesheets.
 This project includes [Heroicons](https://heroicons.com/) from the makers of Tailwind CSS. The Heroicons webpage includes
 an icon search.
 
+## Included Libraries
+
+- [Classnames](https://github.com/JedWatson/classnames#readme)
+- [Heroicons (React)](https://github.com/tailwindlabs/heroicons#readme)
+- [Lodash](https://lodash.com/)
+
