@@ -96,6 +96,7 @@ an icon search.
 ## Included Libraries
 
 - [Classnames](https://github.com/JedWatson/classnames#readme)
+- [Cookie](https://github.com/jshttp/cookie)
 - [Heroicons (React)](https://github.com/tailwindlabs/heroicons#readme)
 - [Lodash](https://lodash.com/)
 
