@@ -21,6 +21,7 @@
     "react-dom": "17.0.2"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.177",
     "@types/node": "^16.7.4",
     "@types/react": "^17.0.19",
     "autoprefixer": "^10.3.4",
