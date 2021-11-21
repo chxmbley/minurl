@@ -40,6 +40,7 @@ Now you can initialize a Next.js app based on this boilerplate with `nextapp my-
 - 🖥 ESLint
 - 👩‍🎨 Stylelint
 - ✈️ Tailwind
+- 🦸 Heroicons
 - 💅 Prettier
 - 🗂 Sensible file structure
 
@@ -86,3 +87,9 @@ can be extended using Tailwind using the `@apply` directive ([see Tailwind docum
 To build an app without custom CSS, delete the default stylesheets (`src/styles/*` and remove references to those files. Then add `import 'tailwindcss/tailwind.css'` to the top
 of `src/pages/_app.page.tsx`. Tailwind CSS classes will be available globally without the need for additional
 stylesheets.
+
+## Icons
+
+This project includes [Heroicons](https://heroicons.com/) from the makers of Tailwind CSS. The Heroicons webpage includes
+an icon search.
+
