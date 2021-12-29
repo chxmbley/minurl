@@ -56,7 +56,7 @@ Now you can initialize a Next.js app based on this boilerplate with `nextapp my-
   - `NEO4J_URI=neo4j://127.0.0.1`
   - `NEO4J_USER=neo4j`
   - `NEO4J_PASSWORD=test`
-- GraphQL Playground available at [localhost:3000/api/graphql](http://localhost:3000/api/graphql) (non-production only)
+- Apollo Sandbox (GraphQL explorer) available at [localhost:3000/api/graphql](http://localhost:3000/api/graphql) (non-production only)
 - Neo4j Browser available at [localhost:7474](http://localhost:7474/browser/)
 
 ## File Structure

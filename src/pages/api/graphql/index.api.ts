@@ -1,28 +1,16 @@
 import { ApolloServer } from 'apollo-server-micro';
+import cors from 'micro-cors';
 import { Neo4jGraphQL } from '@neo4j/graphql';
-import neo4j from 'neo4j-driver';
-import {
-  ApolloServerPluginLandingPageDisabled,
-  ApolloServerPluginLandingPageGraphQLPlayground,
-} from 'apollo-server-core';
-import type { NextApiHandler } from 'next';
-
+import { ApolloServerPluginLandingPageDisabled } from 'apollo-server-core';
+import { driver } from '~lib/neo4j';
 import typeDefs from './typeDefs';
-
-const driver = neo4j.driver(
-  process.env.NEO4J_URI!,
-  neo4j.auth.basic(process.env.NEO4J_USER!, process.env.NEO4J_PASSWORD!),
-);
+import type { NextApiHandler } from 'next';
 
 const neoSchema = new Neo4jGraphQL({ typeDefs, driver });
 
 const apolloServer = new ApolloServer({
   schema: neoSchema.schema,
-  plugins: [
-    process.env.NODE_ENV === 'production'
-      ? ApolloServerPluginLandingPageDisabled()
-      : ApolloServerPluginLandingPageGraphQLPlayground(),
-  ],
+  plugins: process.env.NODE_ENV === 'production' ? [ApolloServerPluginLandingPageDisabled()] : [],
 });
 
 const startServer = apolloServer.start();
@@ -33,9 +21,14 @@ export const config = {
   },
 };
 
-const handler: NextApiHandler = async (req, res) => {
+const handler: NextApiHandler = cors()(async (req, res) => {
+  if (req.method === 'OPTIONS') {
+    res.end();
+    return false;
+  }
+
   await startServer;
   return apolloServer.createHandler({ path: '/api/graphql' })(req, res);
-};
+});
 
 export default handler;
