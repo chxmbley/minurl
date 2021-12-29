@@ -28,6 +28,7 @@ Now you can initialize a Next.js app based on this boilerplate with `nextapp my-
 
 ## TODO
 
+- [ ] Husky git hooks
 - [ ] Testing configuration
   - [ ] Jest + RTL for unit tests
   - [ ] Cypress for integration tests
