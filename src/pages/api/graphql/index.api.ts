@@ -14,6 +14,11 @@ const apolloServer = new ApolloServer({
 });
 
 const startServer = apolloServer.start();
+const assertIndexesAndConstraints = neoSchema.assertIndexesAndConstraints({
+  options: {
+    create: true,
+  },
+});
 
 export const config = {
   api: {
@@ -27,6 +32,7 @@ const handler: NextApiHandler = cors()(async (req, res) => {
     return false;
   }
 
+  await assertIndexesAndConstraints;
   await startServer;
   return apolloServer.createHandler({ path: '/api/graphql' })(req, res);
 });
