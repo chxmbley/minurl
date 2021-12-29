@@ -29,6 +29,8 @@ Now you can initialize a Next.js app based on this boilerplate with `nextapp my-
 ## TODO
 
 - [ ] Testing configuration
+  - [ ] Jest + RTL for unit tests
+  - [ ] Cypress for integration tests
 - [ ] Dockerfile
 - [ ] [Optimize Tailwind for production](https://tailwindcss.com/docs/optimizing-for-production)
 - [ ] Better documentation
@@ -39,10 +41,12 @@ Now you can initialize a Next.js app based on this boilerplate with `nextapp my-
 - 🎨 Sass
 - 🖥 ESLint
 - 👩‍🎨 Stylelint
-- ✈️ Tailwind
+- ✈️ Tailwind CSS
 - 🦸 Heroicons
 - 💅 Prettier
 - 🗂 Sensible file structure
+- 🧑‍🚀 Apollo GraphQL client & server
+- 🐋 Docker compose w/Neo4j database
 
 ## File Structure
 
@@ -78,7 +82,7 @@ src/
 
 ```
 
-## Using Tailwind
+## Using Tailwind CSS
 
 By default, Tailwind CSS is imported in `src/styles/globals.scss`, which itself is imported in
 `src/pages/_app.page.tsx`. Tailwind classes are available globally. Optionally, custom CSS classes
@@ -95,8 +99,10 @@ an icon search.
 
 ## Included Libraries
 
+- [Apollo Client](https://www.apollographql.com/docs/react/)
+- [Apollo Server](https://www.apollographql.com/docs/apollo-server)
 - [Classnames](https://github.com/JedWatson/classnames#readme)
-- [Cookie](https://github.com/jshttp/cookie)
 - [Heroicons (React)](https://github.com/tailwindlabs/heroicons#readme)
 - [Lodash](https://lodash.com/)
+- [Tailwind CSS](https://tailwindcss.com/docs/installation)
 
