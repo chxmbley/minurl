@@ -1,5 +1,6 @@
 {
   "extends": "stylelint-config-sass-guidelines",
+  "files": ["./src/**/*.css", "./src/**/*.scss"],
   "plugins": ["stylelint-prettier"],
   "rules": {
     "scss/at-rule-no-unknown": [true, {
