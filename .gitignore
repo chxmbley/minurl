@@ -35,3 +35,6 @@ yarn-error.log*
 
 # editor artifacts
 .idea
+
+# local neo4j data
+.neo4j
