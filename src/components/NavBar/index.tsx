@@ -13,7 +13,7 @@ const NavBar: FC = () => (
 
     <div className="flex">
       <Button className="mr-2">Log In</Button>
-      <Button primary>Sign Up</Button>
+      <Button variant="primary">Sign Up</Button>
     </div>
   </nav>
 );

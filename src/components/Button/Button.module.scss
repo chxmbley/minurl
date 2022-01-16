@@ -28,3 +28,20 @@
     @include disabled-colors;
   }
 }
+
+.button.accent {
+  @apply bg-cyan-500 text-white;
+
+  &:hover,
+  &focus {
+    @apply bg-cyan-400;
+  }
+
+  &:disabled {
+    @include disabled-colors;
+  }
+}
+
+.button.round {
+  @apply aspect-square rounded-full;
+}
