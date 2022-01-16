@@ -1,19 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Input adds a provided className to the component 1`] = `
+exports[`adds a provided className to the component 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
       <input
-        class="my-custom-classname border border-slate-200 dark:border-slate-700 px-6 h-12 rounded-full shadow-lg text-lg dark:bg-slate-800 dark:text-slate-100 outline-none transition-colors focus:border-cyan-500"
+        class="my-custom-classname input"
         data-testid="input"
       />
     </div>
   </body>,
   "container": <div>
     <input
-      class="my-custom-classname border border-slate-200 dark:border-slate-700 px-6 h-12 rounded-full shadow-lg text-lg dark:bg-slate-800 dark:text-slate-100 outline-none transition-colors focus:border-cyan-500"
+      class="my-custom-classname input"
       data-testid="input"
     />
   </div>,
@@ -71,19 +71,19 @@ Object {
 }
 `;
 
-exports[`Input renders an Input component 1`] = `
+exports[`renders an Input component 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
       <input
-        class="border border-slate-200 dark:border-slate-700 px-6 h-12 rounded-full shadow-lg text-lg dark:bg-slate-800 dark:text-slate-100 outline-none transition-colors focus:border-cyan-500"
+        class="input"
       />
     </div>
   </body>,
   "container": <div>
     <input
-      class="border border-slate-200 dark:border-slate-700 px-6 h-12 rounded-full shadow-lg text-lg dark:bg-slate-800 dark:text-slate-100 outline-none transition-colors focus:border-cyan-500"
+      class="input"
     />
   </div>,
   "debug": [Function],

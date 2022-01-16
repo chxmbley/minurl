@@ -1,19 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button adds a provided className to the component 1`] = `
+exports[`adds a provided className to the component 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
       <button
-        class="my-custom-classname button"
+        class="my-custom-classname button secondary"
         data-testid="button"
       />
     </div>
   </body>,
   "container": <div>
     <button
-      class="my-custom-classname button"
+      class="my-custom-classname button secondary"
       data-testid="button"
     />
   </div>,
@@ -71,19 +71,19 @@ Object {
 }
 `;
 
-exports[`Button renders a Button component 1`] = `
+exports[`renders a Button component 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
       <button
-        class="button"
+        class="button secondary"
       />
     </div>
   </body>,
   "container": <div>
     <button
-      class="button"
+      class="button secondary"
     />
   </div>,
   "debug": [Function],
@@ -140,13 +140,13 @@ Object {
 }
 `;
 
-exports[`Button renders a Button component with React node children 1`] = `
+exports[`renders a Button component with React node children 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
       <button
-        class="button"
+        class="button secondary"
       >
         Hello 
         <span
@@ -159,7 +159,7 @@ Object {
   </body>,
   "container": <div>
     <button
-      class="button"
+      class="button secondary"
     >
       Hello 
       <span
@@ -223,13 +223,13 @@ Object {
 }
 `;
 
-exports[`Button renders a Button component with text children 1`] = `
+exports[`renders a Button component with text children 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
       <button
-        class="button"
+        class="button secondary"
       >
         Hello world!
       </button>
@@ -237,7 +237,7 @@ Object {
   </body>,
   "container": <div>
     <button
-      class="button"
+      class="button secondary"
     >
       Hello world!
     </button>

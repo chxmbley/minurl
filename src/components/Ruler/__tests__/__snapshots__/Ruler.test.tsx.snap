@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Ruler renders a Ruler component 1`] = `
+exports[`renders a Ruler component 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
@@ -173,7 +173,7 @@ Object {
 }
 `;
 
-exports[`Ruler renders a Ruler component with the specified number of segments 1`] = `
+exports[`renders a Ruler component with the specified number of segments 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>

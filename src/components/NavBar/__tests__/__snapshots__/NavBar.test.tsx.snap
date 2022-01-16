@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NavBar renders a NavBar component 1`] = `
+exports[`renders a NavBar component 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
@@ -21,12 +21,12 @@ Object {
           class="flex"
         >
           <button
-            class="mr-2 rounded px-3 text-slate-600 dark:text-white text-xs uppercase font-medium tracking-wider transition-colors hover:bg-slate-200 hover:dark:bg-slate-800"
+            class="mr-2 button secondary"
           >
-            Login
+            Log In
           </button>
           <button
-            class="bg-purple-600 rounded px-3 text-white text-xs uppercase font-medium tracking-wider transition-colors hover:bg-purple-500"
+            class="button primary"
           >
             Sign Up
           </button>
@@ -51,12 +51,12 @@ Object {
         class="flex"
       >
         <button
-          class="mr-2 rounded px-3 text-slate-600 dark:text-white text-xs uppercase font-medium tracking-wider transition-colors hover:bg-slate-200 hover:dark:bg-slate-800"
+          class="mr-2 button secondary"
         >
-          Login
+          Log In
         </button>
         <button
-          class="bg-purple-600 rounded px-3 text-white text-xs uppercase font-medium tracking-wider transition-colors hover:bg-purple-500"
+          class="button primary"
         >
           Sign Up
         </button>
