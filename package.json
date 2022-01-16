@@ -1,7 +1,8 @@
 {
-  "name": "nextjs-boilerplate",
+  "name": "@jdchum/minurl",
   "version": "0.1.0",
   "private": true,
+  "license": "UNLICENSED",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -14,23 +15,20 @@
     "lint:all:fix": "npm run lint:fix && npm run lint:style:fix"
   },
   "dependencies": {
-    "@apollo/client": "^3.5.6",
     "@heroicons/react": "^1.0.5",
-    "@neo4j/graphql": "^2.5.4",
-    "apollo-server-micro": "^3.5.0",
+    "@prisma/client": "^3.8.1",
+    "axios": "^0.24.0",
     "classnames": "^2.3.1",
-    "graphql": "^16.2.0",
+    "http-status-codes": "^2.2.0",
     "lodash": "^4.17.21",
-    "micro": "^9.3.4",
-    "micro-cors": "^0.1.1",
-    "neo4j-driver": "^4.4.1",
     "next": "^12.0.7",
+    "randexp": "^0.5.3",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-hook-form": "^7.24.0"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.178",
-    "@types/micro-cors": "^0.1.2",
     "@types/node": "^17.0.5",
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
@@ -41,6 +39,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "postcss": "^8.4.5",
     "prettier": "^2.5.1",
+    "prisma": "^3.8.1",
     "sass": "^1.45.1",
     "stylelint": "^14.2.0",
     "stylelint-config-sass-guidelines": "^9.0.1",
