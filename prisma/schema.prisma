@@ -1,0 +1,38 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Minified (i.e. shortened) URL data
+model MinifiedUrl {
+  // Unique identifier for the minified URL
+  id        Int        @id @default(autoincrement())
+  // A short string by which to identify the URL. This value should be appended to a base app URL to construct the shortened URL.
+  slug      String     @unique @db.VarChar(32)
+  // The full URL which was shortened. This is the destination URL to which a shortened URL will redirect
+  url       String     @unique @db.VarChar(255)
+  // Timestamp of when the shortened URL was registered
+  createdAt DateTime   @default(now())
+  // Redirect entries associated with this URL
+  Redirect  Redirect[]
+}
+
+// Redirect event data created when an shortened URL is requested and redirected
+model Redirect {
+  // Unique identifier for the redirect event
+  id            Int         @id @default(autoincrement())
+  // MD5 hash of the requester's IP address if available
+  ipAddressHash String?     @db.VarChar(32)
+  // Requester's user agent string if available
+  userAgent     String?
+  // Timestamp of the redirect event
+  createdAt     DateTime    @default(now())
+  // Minified URL entry associated with the request
+  url           MinifiedUrl @relation(fields: [urlId], references: [id])
+  // ID of the minified URL entry associated with the request
+  urlId         Int
+}
