@@ -1,6 +1,5 @@
-import { createHash } from 'crypto';
 import RandExp from 'randexp';
-import { APP_BASE_URL, LONG_INPUT_URL_MESSAGES, OUTPUT_URL_MESSAGES, SHORT_INPUT_URL_MESSAGES } from './constants';
+import { APP_BASE_URL } from '~lib/constants';
 
 /**
  * Generates a random alphanumeric slug.
@@ -49,30 +48,3 @@ export const isAppRedirectUrl = (url: string): boolean => {
     return false;
   }
 };
-
-/**
- * Randomly selects one element from a given array
- * @param arr - Array from which to select the element
- */
-const getRandomElement = <T>(arr: T[]): T => arr[Math.floor(Math.random() * arr.length)];
-
-/**
- * Selects a random message to display for an input URL.
- * The length of the provided URL determines which list of messages the resulting message is selected from.
- * @param url - Input URL for which to generate a message
- */
-export const getRandomInputUrlMessage = (url: string): string => {
-  const messageList = url.length < 45 ? SHORT_INPUT_URL_MESSAGES : LONG_INPUT_URL_MESSAGES;
-  return getRandomElement(messageList);
-};
-
-/**
- * Selects a random message to display for an output (shortened) URL.
- */
-export const getRandomOutputUrlMessage = (): string => getRandomElement(OUTPUT_URL_MESSAGES);
-
-/**
- * Creates an MD5 hash (hexadecimal) of the provided string
- * @param str - String to hash
- */
-export const md5Hash = (str: string): string => createHash('md5').update(str).digest('hex');

@@ -6,13 +6,8 @@ import { useForm } from 'react-hook-form';
 import Input from '~components/Input';
 import Button from '~components/Button';
 import { URL_FIELD_NAME } from './constants';
-import {
-  constructMiniUrlFromSlug,
-  getRandomInputUrlMessage,
-  getRandomOutputUrlMessage,
-  isAppRedirectUrl,
-  isValidUrl,
-} from '~lib/utils';
+import { constructMiniUrlFromSlug, isAppRedirectUrl, isValidUrl } from '~lib/utils/url';
+import { getRandomInputUrlMessage, getRandomOutputUrlMessage } from '~lib/utils/messages';
 import type { FC, MouseEventHandler } from 'react';
 import type { MinifierFormData, MinifierFormProps } from './types';
 
