@@ -2,8 +2,6 @@
 export type RulerProps = {
   /** CSS class applied to the component */
   className?: string;
-  /** Number of major (larger) segments of the ruler */
-  majorSegments?: number;
-  /** Number of minor (smaller) segments between each pair of major segments of the ruler */
-  minorSegments?: number;
+  /** Number of segments of the ruler. Three smaller segments will be rendered between each pair of segments. */
+  segments?: number;
 };
