@@ -1,6 +1,6 @@
 import cn from 'classnames';
 import { isEmpty } from 'lodash';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { ArrowRightIcon, RewindIcon } from '@heroicons/react/solid';
 import { useForm } from 'react-hook-form';
 import Input from '~components/Input';
@@ -10,8 +10,9 @@ import { constructMiniUrlFromSlug, isAppRedirectUrl, isValidUrl } from '~lib/uti
 import { getRandomInputUrlMessage, getRandomOutputUrlMessage } from '~lib/utils/messages';
 import type { FC, MouseEventHandler } from 'react';
 import type { MinifierFormData, MinifierFormProps } from './types';
+import styles from './MinifierForm.module.scss';
 
-const MinifierForm: FC<MinifierFormProps> = ({ className, onReset, onSubmit, slug }) => {
+const MinifierForm: FC<MinifierFormProps> = ({ className, isLoading = false, onReset, onSubmit, slug }) => {
   const [didCopy, setDidCopy] = useState(false);
   const [formMessage, setFormMessage] = useState('');
   const [isAppUrl, setIsAppUrl] = useState(false);
@@ -23,6 +24,8 @@ const MinifierForm: FC<MinifierFormProps> = ({ className, onReset, onSubmit, slu
     handleSubmit,
     formState: { errors },
   } = useForm<MinifierFormData>({ mode: 'onChange' });
+
+  const shouldDisableSubmit = useMemo(() => !isEmpty(errors) || isAppUrl || isLoading, [errors, isAppUrl, isLoading]);
 
   useEffect(() => {
     const subscription = watch((value) => {
@@ -71,47 +74,42 @@ const MinifierForm: FC<MinifierFormProps> = ({ className, onReset, onSubmit, slu
     <form className={cn(className, 'relative')} onSubmit={handleSubmit(innerSubmitHandler)}>
       <div className="relative">
         <Input
-          className={cn('w-full transition-colors pr-12', {
-            'text-red-600 dark:text-red-400 border-red-600 dark:border-red-600': !isEmpty(errors[URL_FIELD_NAME]),
-          })}
+          className={styles.urlInput}
           type="url"
-          placeholder="paste your url"
+          placeholder="paste a url"
           readOnly={slug !== null}
+          disabled={isLoading}
           {...register(URL_FIELD_NAME, {
             required: true,
             validate: isValidUrl,
           })}
         />
+
         {slug !== null && (
-          <button
+          <Button
             type="button"
-            onClick={copyToClipboard}
             title="Copy URL"
-            className={cn(
-              'absolute h-8 w-20 rounded transition-colors hover:bg-slate-200 hover:dark:bg-slate-700 hover:dark:text-slate-400 hover:text-slate-500 right-12 top-1/2 -translate-y-1/2 text-xs uppercase tracking-wider font-bold text-slate-400 dark:text-slate-500',
-              {
-                'text-green-600 dark:text-green-400 hover:text-green-600 hover:dark:text-green-300': didCopy,
-              },
-            )}>
+            onClick={copyToClipboard}
+            className={cn(styles.copyButton, { [styles.copied]: didCopy })}>
             {didCopy ? 'copied!' : 'copy'}
-          </button>
+          </Button>
         )}
       </div>
 
       <Button
         role="submit"
-        className={cn('absolute w-10 right-1 top-1 h-10 rounded-full', {
-          'bg-purple-500 hover:bg-purple-400 focus:bg-purple-400 dark:bg-purple-500 dark:hover:bg-purple-400 dark:focus:bg-purple-400':
-            slug !== null,
-        })}
+        className={styles.submitButton}
+        round
+        variant={slug === null ? 'accent' : 'primary'}
         title={slug === null ? 'Submit' : 'Reset'}
-        disabled={!isEmpty(errors) || isAppUrl}>
+        disabled={shouldDisableSubmit}>
         {slug === null ? (
-          <ArrowRightIcon className="w-5 h-5 flex-shrink-0" />
+          <ArrowRightIcon className={styles.submitButtonIcon} />
         ) : (
-          <RewindIcon className="w-5 h-5 flex-shrink-0" />
+          <RewindIcon className={styles.submitButtonIcon} />
         )}
       </Button>
+
       <div className="text-slate-600 dark:text-slate-300 text-sm text-center mt-4 h-5">
         {!isEmpty(errors[URL_FIELD_NAME]) ? 'invalid url' : formMessage}
       </div>

@@ -9,6 +9,8 @@ export type MinifierFormData = {
 export type MinifierFormProps = {
   /** CSS class to apply to the component */
   className?: string;
+  /** Whether to render a loading state and disable user input */
+  isLoading?: boolean;
   /** Callback executed when the form is reset */
   onReset: () => void;
   /** Callback executed with form data when the form is submitted */

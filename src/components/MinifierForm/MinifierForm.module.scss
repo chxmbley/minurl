@@ -1,0 +1,28 @@
+.urlInput {
+  @apply w-full pr-12;
+}
+
+.submitButton {
+  @apply absolute right-1 top-1 w-10 h-10 border border-transparent;
+
+  &:disabled {
+    @apply border-slate-200 dark:border-slate-700;
+  }
+}
+
+.submitButtonIcon {
+  @apply w-5 h-5 flex-shrink-0;
+}
+
+.copyButton {
+  @apply absolute right-12 top-1/2 -translate-y-1/2 w-20;
+
+  &.copied {
+    @apply text-green-600 dark:text-green-400;
+
+    &:hover,
+    &:focus {
+      @apply hover:text-green-600 hover:dark:text-green-300;
+    }
+  }
+}
