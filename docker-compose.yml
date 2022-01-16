@@ -1,15 +1,8 @@
 services:
-  neo4j:
-    image: neo4j:latest
+  database:
+    image: postgres
+    env_file: ./.env
     ports:
-      - 7474:7474
-      - 7687:7687
+      - 5432:5432
     volumes:
-      - $PWD/.neo4j/data:/data
-      - $PWD/.neo4j/plugins:/plugins
-    environment:
-      - NEO4J_AUTH=neo4j/abc123
-      - NEO4J_apoc_export_file_enabled=true
-      - NEO4J_apoc_import_file_enabled=true
-      - NEO4J_apoc_import_file_use__neo4j__config=true
-      - NEO4JLABS_PLUGINS=["apoc"]
+      - $PWD/.postgresql/data:/var/lib/postgresql/data/
