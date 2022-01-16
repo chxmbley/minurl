@@ -1,6 +1,6 @@
 import { NextApiHandler } from 'next';
 import StatusCodes from 'http-status-codes';
-import { isValidUrl } from '~lib/utils';
+import { isValidUrl } from '~lib/utils/url';
 import { findOrCreateMinifiedUrlSlug } from '~lib/db/minifiedUrl';
 
 const handler: NextApiHandler = async (req, res) => {
