@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Button from '~components/Button';
 import type { FC } from 'react';
 
 /** Application navigation bar */
@@ -11,12 +12,8 @@ const NavBar: FC = () => (
     </Link>
 
     <div className="flex">
-      <button className="mr-2 rounded px-3 text-slate-600 dark:text-white text-xs uppercase font-medium tracking-wider transition-colors hover:bg-slate-200 hover:dark:bg-slate-800">
-        Login
-      </button>
-      <button className="bg-purple-600 rounded px-3 text-white text-xs uppercase font-medium tracking-wider transition-colors hover:bg-purple-500">
-        Sign Up
-      </button>
+      <Button className="mr-2">Log In</Button>
+      <Button primary>Sign Up</Button>
     </div>
   </nav>
 );

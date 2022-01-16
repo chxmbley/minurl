@@ -4,8 +4,8 @@ import type { ButtonProps } from './types';
 import styles from './Button.module.scss';
 
 /** Styled Button component */
-const Button: FC<ButtonProps> = ({ className, ...props }) => (
-  <button className={cn(className, styles.button)} {...props} />
+const Button: FC<ButtonProps> = ({ className, primary = false, ...props }) => (
+  <button className={cn(className, styles.button, { [styles.primary]: primary })} {...props} />
 );
 
 export default Button;
