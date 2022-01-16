@@ -1,0 +1,15 @@
+.input {
+  @apply border border-slate-200 dark:border-slate-700 px-6 h-12 rounded-full shadow-lg text-lg dark:bg-slate-800 dark:text-slate-100 outline-none transition-colors;
+
+  &focus {
+    @apply border-cyan-500;
+  }
+
+  &:invalid {
+    @apply text-red-600 dark:text-red-400 border-red-600 dark:border-red-600;
+  }
+
+  &:disabled {
+    @apply cursor-not-allowed bg-slate-200 text-slate-400;
+  }
+}
