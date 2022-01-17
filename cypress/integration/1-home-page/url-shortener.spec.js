@@ -29,7 +29,7 @@ describe('Home page', () => {
   });
 
   it('minifies a valid URL', () => {
-    cy.get('@input').type(LONG_URL, { delay: 0 }).should('have.value', LONG_URL);
+    cy.get('@input').type(LONG_URL).should('have.value', LONG_URL);
     cy.get('@submit').should('not.be.disabled');
 
     // Check that appropriate message is displayed for the input URL
@@ -67,7 +67,7 @@ describe('Home page', () => {
     const invalidUrl = 'not-a-url';
 
     cy.get('@input')
-      .type(invalidUrl, { delay: 0 })
+      .type(invalidUrl)
       .should('have.value', invalidUrl)
       .then(($input) => $input[0].checkValidity())
       .should('be.false');
@@ -84,17 +84,13 @@ describe('Home page', () => {
   it('disallows URLs that may already be existing shortened URLs', () => {
     const url = `${APP_BASE_URL}/abc123`;
 
-    cy.get('@input')
-      .type(url, { delay: 0 })
-      .should('have.value', url)
-      .should('not.be.disabled')
-      .should('not.have.attr', 'readonly');
+    cy.get('@input').type(url).should('have.value', url).should('not.be.disabled').should('not.have.attr', 'readonly');
 
     cy.get('@submit').should('be.disabled');
   });
 
   it('resets the input when submitted after a URL has been shortened', () => {
-    cy.get('@input').type(LONG_URL, { delay: 0 }).should('have.value', LONG_URL);
+    cy.get('@input').type(LONG_URL).should('have.value', LONG_URL);
     cy.get('@submit').click();
 
     cy.wait('@minifyUrlRequest');
@@ -116,7 +112,7 @@ describe('Home page', () => {
     const randomUrlA = getRandomUrl();
     const randomUrlB = getRandomUrl();
 
-    cy.get('@input').type(randomUrlA, { delay: 0 }).should('have.value', randomUrlA);
+    cy.get('@input').type(randomUrlA).should('have.value', randomUrlA);
     cy.get('@submit').click();
 
     cy.wait('@minifyUrlRequest');
@@ -128,7 +124,7 @@ describe('Home page', () => {
     // Reset URL
     cy.get('@submit').should('have.attr', 'title', 'Reset').click();
 
-    cy.get('@input').type(randomUrlB, { delay: 0 }).should('have.value', randomUrlB);
+    cy.get('@input').type(randomUrlB).should('have.value', randomUrlB);
     cy.get('@submit').click();
 
     cy.wait('@minifyUrlRequest');
@@ -141,7 +137,7 @@ describe('Home page', () => {
   it('generates the same shortened URL for duplicate input URLs', () => {
     const randomUrl = getRandomUrl();
 
-    cy.get('@input').type(randomUrl, { delay: 0 }).should('have.value', randomUrl);
+    cy.get('@input').type(randomUrl).should('have.value', randomUrl);
     cy.get('@submit').click();
 
     cy.wait('@minifyUrlRequest');
@@ -152,7 +148,7 @@ describe('Home page', () => {
       // Reset
       cy.get('@submit').should('have.attr', 'title', 'Reset').click();
 
-      cy.get('@input').type(randomUrl, { delay: 0 }).should('have.value', randomUrl);
+      cy.get('@input').type(randomUrl).should('have.value', randomUrl);
       cy.get('@submit').click();
 
       cy.wait('@minifyUrlRequest');
@@ -169,7 +165,7 @@ describe('Home page', () => {
     cy.visit('http://localhost:3000');
     cy.intercept('POST', MINIFY_ENDPOINT).as('minifyUrlRequest');
 
-    cy.get('@input').type(getRandomUrl(), { delay: 0 });
+    cy.get('@input').type(getRandomUrl());
     cy.get('@submit').click();
 
     cy.wait('@minifyUrlRequest');
@@ -188,7 +184,7 @@ describe('Home page', () => {
   });
 
   it('resets the "copy" button when the input is reset', () => {
-    cy.get('@input').type(LONG_URL, { delay: 0 });
+    cy.get('@input').type(LONG_URL);
     cy.get('@submit').click();
 
     cy.wait('@minifyUrlRequest');
@@ -202,14 +198,14 @@ describe('Home page', () => {
     cy.get('@submit').click();
     cy.get('button[type="button"]').should('not.exist');
 
-    cy.get('@input').type(LONG_URL, { delay: 0 });
+    cy.get('@input').type(LONG_URL);
     cy.get('@submit').click();
 
     cy.get('button[type="button"]').should('contain.text', 'copy', { matchCase: false });
   });
 
   it('redirects to a full URL when a shortened URL is requested', () => {
-    cy.get('@input').type(LONG_URL, { delay: 0 });
+    cy.get('@input').type(LONG_URL);
     cy.get('@submit').click();
 
     cy.wait('@minifyUrlRequest');
