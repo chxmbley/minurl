@@ -8,7 +8,6 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "ci": "npm run lint:all && npm run test && npm run build && npm run db:migrate:test && start-server-and-test start http://localhost:3000 cypress:headless",
     "lint:fix": "npm run lint -- --fix",
     "lint:style": "stylelint **/*.scss",
     "lint:style:fix": "npm run lint:style -- --fix",

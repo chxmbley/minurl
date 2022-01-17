@@ -7,15 +7,22 @@
 # anything else that needs to happen before your server is started
 # for the first time
 setup:
-	npm ci && npm run db:migrate
+	npm ci
+	npm run db:migrate
 
 # `make server` will be used after `make setup` in order to start
 # an http server process that listens on any unreserved port
 #	of your choice (e.g. 8080).
 server:
-	npm run build && npm run start
+	npm run build
+	npm run start
 
 # `make test` will be used after `make setup` in order to run
 # your test suite.
 test:
-	npm run ci
+	npm run lint
+	npm run lint:style
+	npm run test
+	npm run build
+	npm run db:migrate:test
+	npx start-server-and-test start http://localhost:3000 cypress:headless
