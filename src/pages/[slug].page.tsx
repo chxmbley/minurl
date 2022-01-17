@@ -11,7 +11,7 @@ export const getServerSideProps: GetServerSideProps<{}, { slug: string }> = asyn
   if (destination === null) {
     return {
       redirect: {
-        destination: `/?notfound=${slug}`,
+        destination: '/',
         permanent: false,
       },
     };
