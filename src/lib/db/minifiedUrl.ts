@@ -14,7 +14,6 @@ export const findOrCreateMinifiedUrlSlug = async (url: string): Promise<string> 
     const data = await client.minifiedUrl.findFirst({ where: { url }, select: { slug: true } });
 
     if (!isNil(data?.slug)) {
-      await client.$disconnect();
       return data!.slug;
     }
 
