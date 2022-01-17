@@ -13,6 +13,8 @@
     "lint:style:fix": "npm run lint:style -- --fix",
     "lint:all": "npm run lint && npm run lint:style",
     "lint:all:fix": "npm run lint:fix && npm run lint:style:fix",
+    "db:reset": "prisma migrate reset",
+    "db:reset:ci": "npm run db:reset -- --force",
     "test": "NODE_ENV=test jest"
   },
   "dependencies": {
