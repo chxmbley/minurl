@@ -13,7 +13,7 @@
     "lint:style:fix": "npm run lint:style -- --fix",
     "lint:all": "npm run lint && npm run lint:style",
     "lint:all:fix": "npm run lint:fix && npm run lint:style:fix",
-    "test": "jest"
+    "test": "NODE_ENV=test jest"
   },
   "dependencies": {
     "@heroicons/react": "^1.0.5",
