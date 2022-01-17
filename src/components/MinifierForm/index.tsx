@@ -20,12 +20,13 @@ const MinifierForm: FC<MinifierFormProps> = ({ className, isLoading = false, onR
   const {
     register,
     watch,
+    getValues,
     setValue,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isDirty },
   } = useForm<MinifierFormData>({ mode: 'onChange' });
 
-  const shouldDisableSubmit = useMemo(() => !isEmpty(errors) || isAppUrl || isLoading, [errors, isAppUrl, isLoading]);
+  const shouldDisableSubmit = !isDirty || !isEmpty(errors) || isAppUrl || isLoading;
 
   useEffect(() => {
     const subscription = watch((value) => {
@@ -50,7 +51,11 @@ const MinifierForm: FC<MinifierFormProps> = ({ className, isLoading = false, onR
   }, [errors, slug, watch]);
 
   useEffect(() => {
-    setValue(URL_FIELD_NAME, slug === null ? '' : constructMiniUrlFromSlug(slug));
+    if (slug === null) {
+      return;
+    }
+
+    setValue(URL_FIELD_NAME, constructMiniUrlFromSlug(slug));
   }, [slug, setValue]);
 
   const handleReset = useCallback(() => {
