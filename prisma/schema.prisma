@@ -3,7 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
@@ -12,9 +12,9 @@ model MinifiedUrl {
   // Unique identifier for the minified URL
   id        Int        @id @default(autoincrement())
   // A short string by which to identify the URL. This value should be appended to a base app URL to construct the shortened URL.
-  slug      String     @unique @db.VarChar(32)
+  slug      String     @unique
   // The full URL which was shortened. This is the destination URL to which a shortened URL will redirect
-  url       String     @unique @db.VarChar(255)
+  url       String     @unique
   // Timestamp of when the shortened URL was registered
   createdAt DateTime   @default(now())
   // Redirect entries associated with this URL
@@ -26,7 +26,7 @@ model Redirect {
   // Unique identifier for the redirect event
   id            Int         @id @default(autoincrement())
   // MD5 hash of the requester's IP address if available
-  ipAddressHash String?     @db.VarChar(32)
+  ipAddressHash String?
   // Requester's user agent string if available
   userAgent     String?
   // Timestamp of the redirect event
