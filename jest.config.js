@@ -13,6 +13,7 @@ const config = {
       statements: 95,
     },
   },
+  modulePathIgnorePatterns: ['cypress'],
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   moduleNameMapper: { '^~(.*)$': '<rootDir>/src/$1' },
   testEnvironment: 'jest-environment-jsdom',
