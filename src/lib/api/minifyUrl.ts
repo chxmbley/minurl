@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { MINIFY_ENDPOINT } from '~lib/api/constants';
 import type { MinifyUrlApiResponse, MinifyUrlApiResponseData } from './types';
 
 /**
@@ -6,6 +7,6 @@ import type { MinifyUrlApiResponse, MinifyUrlApiResponseData } from './types';
  * @param url - URL to minify
  */
 export const minifyUrl = async (url: string): Promise<MinifyUrlApiResponseData> => {
-  const { data } = await axios.post<MinifyUrlApiResponse>('/api/v1/minify', { url });
+  const { data } = await axios.post<MinifyUrlApiResponse>(MINIFY_ENDPOINT, { url });
   return data.data;
 };
