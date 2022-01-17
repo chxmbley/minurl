@@ -55,8 +55,10 @@ const MinifierForm: FC<MinifierFormProps> = ({ className, isLoading = false, onR
 
   const handleReset = useCallback(() => {
     setDidCopy(false);
+    setValue(URL_FIELD_NAME, '', { shouldValidate: true });
+    setFormMessage('');
     onReset();
-  }, [onReset]);
+  }, [onReset, setValue]);
 
   const innerSubmitHandler = useCallback(
     (data: MinifierFormData) => {
@@ -69,6 +71,14 @@ const MinifierForm: FC<MinifierFormProps> = ({ className, isLoading = false, onR
     await navigator.clipboard.writeText(constructMiniUrlFromSlug(slug!));
     setDidCopy(true);
   }, [slug]);
+
+  const messageToRender = useMemo(() => {
+    if (isEmpty(getValues(URL_FIELD_NAME))) {
+      return '';
+    }
+
+    return !isEmpty(errors[URL_FIELD_NAME]) ? 'invalid url' : formMessage;
+  }, [getValues, errors, formMessage]);
 
   return (
     <form className={cn(className, 'relative')} onSubmit={handleSubmit(innerSubmitHandler)}>
@@ -110,9 +120,7 @@ const MinifierForm: FC<MinifierFormProps> = ({ className, isLoading = false, onR
         )}
       </Button>
 
-      <div className="text-slate-600 dark:text-slate-300 text-sm text-center mt-4 h-5">
-        {!isEmpty(errors[URL_FIELD_NAME]) ? 'invalid url' : formMessage}
-      </div>
+      <span className="block text-slate-600 dark:text-slate-300 text-sm text-center mt-4 h-5">{messageToRender}</span>
     </form>
   );
 };
