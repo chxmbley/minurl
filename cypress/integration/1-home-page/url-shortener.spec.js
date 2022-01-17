@@ -12,7 +12,7 @@ const getRandomUrl = () => {
 };
 
 describe('Home page', () => {
-  beforeAll(() => {
+  before(() => {
     cy.exec('npm run db:reset:ci');
   });
 
