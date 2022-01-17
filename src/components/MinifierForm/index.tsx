@@ -105,7 +105,9 @@ const MinifierForm: FC<MinifierFormProps> = ({ className, isLoading = false, onR
             type="button"
             title="Copy URL"
             onClick={copyToClipboard}
-            className={cn(styles.copyButton, { [styles.copied]: didCopy })}>
+            className={cn('absolute right-12 top-1/2 transform -translate-y-1/2 w-20', styles.copyButton, {
+              [styles.copied]: didCopy,
+            })}>
             {didCopy ? 'copied!' : 'copy'}
           </Button>
         )}
