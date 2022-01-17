@@ -1,5 +1,5 @@
 import { isNil } from 'lodash';
-import { generateRandomSlug } from '~lib/utils';
+import { generateRandomSlug } from '~lib/utils/url';
 import client from './client';
 
 /**
