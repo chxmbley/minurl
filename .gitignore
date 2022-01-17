@@ -36,3 +36,7 @@ yarn-error.log*
 
 # local database data
 .postgresql
+
+# Cypress artifacts
+cypress/screenshots
+cypress/videos
