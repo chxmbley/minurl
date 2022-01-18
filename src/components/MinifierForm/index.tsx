@@ -26,7 +26,7 @@ const MinifierForm: FC<MinifierFormProps> = ({ className, isLoading = false, onR
     formState: { errors, isDirty },
   } = useForm<MinifierFormData>({ mode: 'onChange' });
 
-  const shouldDisableSubmit = !isDirty || !isEmpty(errors) || isAppUrl || isLoading;
+  const shouldDisableSubmit = (slug === null && !isDirty) || !isEmpty(errors) || isAppUrl || isLoading;
 
   useEffect(() => {
     const subscription = watch((value) => {
@@ -102,6 +102,7 @@ const MinifierForm: FC<MinifierFormProps> = ({ className, isLoading = false, onR
 
         {slug !== null && (
           <Button
+            data-testid="minifier-form-copy"
             type="button"
             title="Copy URL"
             onClick={copyToClipboard}
@@ -114,6 +115,7 @@ const MinifierForm: FC<MinifierFormProps> = ({ className, isLoading = false, onR
       </div>
 
       <Button
+        data-testid="minifier-form-submit"
         role="submit"
         className={styles.submitButton}
         round
@@ -127,7 +129,11 @@ const MinifierForm: FC<MinifierFormProps> = ({ className, isLoading = false, onR
         )}
       </Button>
 
-      <span className="block text-slate-600 dark:text-slate-300 text-sm text-center mt-4 h-5">{messageToRender}</span>
+      <span
+        data-testid="minifier-form-message"
+        className="block text-slate-600 dark:text-slate-300 text-sm text-center mt-4 h-5">
+        {messageToRender}
+      </span>
     </form>
   );
 };
