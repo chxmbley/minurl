@@ -28,6 +28,7 @@ const MinifierForm: FC<MinifierFormProps> = ({ className, isLoading = false, onR
   } = useForm<MinifierFormData>({ mode: 'onChange' });
 
   const shouldDisableSubmit = (slug === null && !isDirty) || !isEmpty(errors) || isAppUrl || isLoading;
+  const inputFieldErrors = errors[URL_FIELD_NAME];
 
   useEffect(() => {
     const subscription = watch((value) => {
@@ -83,8 +84,8 @@ const MinifierForm: FC<MinifierFormProps> = ({ className, isLoading = false, onR
       return '';
     }
 
-    return !isEmpty(errors[URL_FIELD_NAME]) ? 'invalid url' : formMessage;
-  }, [getValues, errors, formMessage]);
+    return !isEmpty(inputFieldErrors) ? 'invalid url' : formMessage;
+  }, [getValues, inputFieldErrors, formMessage]);
 
   return (
     <form className={cn(className, 'relative')} onSubmit={handleSubmit(innerSubmitHandler)}>
