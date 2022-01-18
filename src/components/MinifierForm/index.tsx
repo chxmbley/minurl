@@ -30,14 +30,14 @@ const MinifierForm: FC<MinifierFormProps> = ({ className, isLoading = false, onR
 
   useEffect(() => {
     const subscription = watch((value) => {
-      if (slug) {
+      if (slug !== null) {
         setFormMessage(getRandomOutputUrlMessage());
         return;
       }
 
       const urlValue = value[URL_FIELD_NAME];
 
-      const isAppUrl = slug === null && isAppRedirectUrl(urlValue ?? '');
+      const isAppUrl = isAppRedirectUrl(urlValue ?? '');
       setIsAppUrl(isAppUrl);
 
       if (isAppUrl) {
