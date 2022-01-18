@@ -12,6 +12,7 @@ import type { FC, MouseEventHandler } from 'react';
 import type { MinifierFormData, MinifierFormProps } from './types';
 import styles from './MinifierForm.module.scss';
 
+/** Form which collects a URL to minify and allows copying of minified URLs identified by a slug */
 const MinifierForm: FC<MinifierFormProps> = ({ className, isLoading = false, onReset, onSubmit, slug }) => {
   const [didCopy, setDidCopy] = useState(false);
   const [formMessage, setFormMessage] = useState('');
