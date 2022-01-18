@@ -30,11 +30,11 @@ const Home: FC = () => {
   }, []);
 
   return (
-    <div className="flex flex-col mx-auto min-h-screen max-w-screen-sm">
+    <div className="flex flex-col px-4 mx-auto min-h-screen max-w-screen-sm">
       <NavBar />
 
       <main className="flex-grow">
-        <h2 className="text-6xl mt-32 mb-8 text-slate-900 dark:text-white font-bold">
+        <h2 className="text-5xl md:text-6xl mt-32 mb-8 text-slate-900 dark:text-white font-bold">
           make many
           <br />
           mini urls
