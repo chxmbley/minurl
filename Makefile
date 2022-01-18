@@ -15,7 +15,7 @@ setup:
 #	of your choice (e.g. 8080).
 server:
 	npm run build
-	npm run start
+	npm run start -- -p 8080
 
 # `make test` will be used after `make setup` in order to run
 # your test suite.
