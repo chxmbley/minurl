@@ -3,19 +3,30 @@ import { useCallback, useState } from 'react';
 import Ruler from '~components/Ruler';
 import NavBar from '~components/NavBar';
 import MinifierForm from '~components/MinifierForm';
+import ErrorMessage from '~components/ErrorMessage';
 import { minifyUrl } from '~lib/api/minifyUrl';
 import type { FC } from 'react';
 import type { MinifierFormData } from '~components/MinifierForm/types';
 
 const Home: FC = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [loadError, setLoadError] = useState<Error | null>(null);
   const [urlSlug, setUrlSlug] = useState<string | null>(null);
 
   const handleMinify = useCallback(async ({ url }: MinifierFormData) => {
+    setLoadError(null);
     setIsLoading(true);
-    const { slug } = await minifyUrl(url);
-    setIsLoading(false);
-    setUrlSlug(slug);
+
+    try {
+      const { slug } = await minifyUrl(url);
+      setUrlSlug(slug);
+    } catch (e) {
+      // TODO: Report error to monitoring service
+      console.error(e);
+      setLoadError(e as Error);
+    } finally {
+      setIsLoading(false);
+    }
   }, []);
 
   return (
@@ -23,11 +34,17 @@ const Home: FC = () => {
       <NavBar />
 
       <main className="flex-grow">
-        <h2 className="text-6xl mt-32 mb-16 text-slate-900 dark:text-white font-bold">
+        <h2 className="text-6xl mt-32 mb-8 text-slate-900 dark:text-white font-bold">
           make many
           <br />
           mini urls
         </h2>
+
+        {loadError !== null && (
+          <ErrorMessage className="mb-8">
+            We tripped while getting your mini URL. We&apos;ll try to do better next time.
+          </ErrorMessage>
+        )}
 
         <Ruler
           className={cn('mb-4 w-full transition-[width] duration-1000 px-5', {
