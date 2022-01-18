@@ -25,4 +25,4 @@ test:
 	npm run test
 	npm run build
 	npm run db:migrate:test
-	npx start-server-and-test start http://localhost:3000 cypress:headless
+	npx dotenv -e .env.test start-server-and-test start http://localhost:3000 cypress:headless
