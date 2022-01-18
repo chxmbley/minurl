@@ -8,17 +8,17 @@ test('renders an ErrorMessage component', () => {
 
 test('adds a provided className to the component', () => {
   const customClassName = 'my-custom-classname';
-  const container = render(<ErrorMessage className={customClassName} />);
+  const { container } = render(<ErrorMessage className={customClassName} />);
   expect(container).toMatchSnapshot();
 });
 
 test('renders text content children', () => {
-  const container = render(<ErrorMessage>Hello world</ErrorMessage>);
+  const { container } = render(<ErrorMessage>Hello world</ErrorMessage>);
   expect(container).toMatchSnapshot();
 });
 
 test('renders React component children', () => {
-  const container = render(
+  const { container } = render(
     <ErrorMessage>
       <strong>Hello world</strong>
     </ErrorMessage>,
@@ -28,6 +28,6 @@ test('renders React component children', () => {
 });
 
 test('overrides the default title when a title prop is provided', () => {
-  const container = render(<ErrorMessage title="Test" />);
+  const { container } = render(<ErrorMessage title="Test" />);
   expect(container).toMatchSnapshot();
 });

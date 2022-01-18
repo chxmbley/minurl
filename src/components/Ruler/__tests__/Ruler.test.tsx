@@ -2,12 +2,12 @@ import { render } from '@testing-library/react';
 import Ruler from '~components/Ruler';
 
 test('renders a Ruler component', () => {
-  const container = render(<Ruler />);
+  const { container } = render(<Ruler />);
   expect(container).toMatchSnapshot();
 });
 
 test('renders a Ruler component with the specified number of segments', async () => {
-  const container = render(<Ruler segments={10} />);
+  const { container } = render(<Ruler segments={10} />);
   expect(container).toMatchSnapshot();
 });
 
