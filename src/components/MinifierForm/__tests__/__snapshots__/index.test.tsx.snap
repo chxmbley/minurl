@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a MinifierForm component 1`] = `
+<div>
+  <form
+    class="relative"
+  >
+    <div
+      class="relative"
+    >
+      <input
+        class="urlInput input"
+        name="url"
+        placeholder="paste a url"
+        type="url"
+      />
+    </div>
+    <button
+      class="submitButton button accent round"
+      data-testid="minifier-form-submit"
+      disabled=""
+      role="submit"
+      title="Submit"
+    >
+      <svg
+        aria-hidden="true"
+        class="submitButtonIcon"
+        fill="currentColor"
+        viewBox="0 0 20 20"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          clip-rule="evenodd"
+          d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+          fill-rule="evenodd"
+        />
+      </svg>
+    </button>
+    <span
+      class="block text-slate-600 dark:text-slate-300 text-sm text-center mt-4 h-5"
+      data-testid="minifier-form-message"
+    />
+  </form>
+</div>
+`;
