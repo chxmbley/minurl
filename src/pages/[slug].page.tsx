@@ -26,8 +26,13 @@ export const getServerSideProps: GetServerSideProps<{}, { slug: string }> = asyn
   const ipAddress = realIpHeader ?? (ctx.req.connection.address() as AddressInfo).address ?? null;
   const userAgent = ctx.req.headers['user-agent'] ?? null;
 
-  // Log redirect in database
-  await createRedirectEntry(ipAddress, userAgent, slug!);
+  try {
+    // Log redirect in database
+    await createRedirectEntry(ipAddress, userAgent, slug!);
+  } catch (e) {
+    // TODO: Report error to monitoring service
+    console.error(e);
+  }
 
   return {
     redirect: {
