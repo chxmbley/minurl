@@ -1,5 +1,5 @@
 import { md5Hash } from '~lib/utils';
-import client from './client';
+import db from './client';
 
 /**
  * Saves redirect information to the database
@@ -10,5 +10,5 @@ import client from './client';
 export const createRedirectEntry = async (ipAddress: string | null, userAgent: string | null, slug: string) => {
   // Hash IP address if provided to anonymize request
   const ipAddressHash = ipAddress === null ? null : md5Hash(ipAddress);
-  await client.redirect.create({ data: { ipAddressHash, userAgent, url: { connect: { slug } } } });
+  await db.redirect.create({ data: { ipAddressHash, userAgent, url: { connect: { slug } } } });
 };

@@ -1,6 +1,6 @@
 import { isNil } from 'lodash';
 import { generateRandomSlug } from '~lib/utils/url';
-import client from './client';
+import db from './client';
 
 /**
  * Attempts to look up and return a slug for the provided URL. If no entry is found, one is created
@@ -8,10 +8,10 @@ import client from './client';
  * @param url - The URL to look up or add
  */
 export const findOrCreateMinifiedUrlSlug = async (url: string): Promise<string> => {
-  await client.$connect();
+  await db.$connect();
 
   try {
-    const data = await client.minifiedUrl.findFirst({ where: { url }, select: { slug: true } });
+    const data = await db.minifiedUrl.findFirst({ where: { url }, select: { slug: true } });
 
     if (!isNil(data?.slug)) {
       return data!.slug;
@@ -19,11 +19,11 @@ export const findOrCreateMinifiedUrlSlug = async (url: string): Promise<string> 
 
     // Else URL is new; assign a slug
     const slug = generateRandomSlug();
-    await client.minifiedUrl.create({ data: { url, slug } });
+    await db.minifiedUrl.create({ data: { url, slug } });
 
     return slug;
   } finally {
-    client.$disconnect();
+    db.$disconnect();
   }
 };
 
@@ -36,8 +36,8 @@ export const findUrlFromSlug = async (slug?: string): Promise<string | null> => 
     return null;
   }
 
-  await client.$connect();
-  const data = await client.minifiedUrl.findFirst({ where: { slug }, select: { url: true } });
-  await client.$disconnect();
+  await db.$connect();
+  const data = await db.minifiedUrl.findFirst({ where: { slug }, select: { url: true } });
+  await db.$disconnect();
   return data?.url ?? null;
 };
