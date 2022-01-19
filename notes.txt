@@ -26,6 +26,8 @@ Testing the Application:
 After setting up the project, run `make test` to run the test suite.
 Alternatively, run one or more of the following NPM scripts to run tests in isolation or with other scripts:
 
+NOTE: Be sure to stop the server running on port 3000 before running E2E tests as the E2E tests will use this port.
+
 - `npm run lint` # Checks source code against ESLint and Prettier
 - `npm run lint:style` # Checks stylesheets against Stylelint
 - `npm run test` # Runs unit test suites using Jest
