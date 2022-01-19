@@ -32,3 +32,9 @@ Alternatively, run one or more of the following NPM scripts to run tests in isol
 - `npm run build` # Builds the application for production
 - `npm run db:migrate:test` # Runs database migration for a distinct test database (separate from app database)
 - `npx dotenv -e .env.test start-server-and-test start http://localhost:3000 cypress:headless` # Starts the server and runs end-to-end tests using Cypress
+
+
+Notes:
+
+- A "Redirects" table exists in the database to track viewership analytics
+- Future updates may support authenticated users with URL management, including tracking viewership
