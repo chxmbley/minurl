@@ -14,20 +14,6 @@ exports[`renders a NavBar component 1`] = `
         minurl 💎
       </h1>
     </a>
-    <div
-      class="flex"
-    >
-      <button
-        class="mr-2 button secondary"
-      >
-        Log In
-      </button>
-      <button
-        class="button primary"
-      >
-        Sign Up
-      </button>
-    </div>
   </nav>
 </div>
 `;
