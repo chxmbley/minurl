@@ -43,3 +43,4 @@ cypress/videos
 
 # local database
 prisma/**/*.db
+prisma/**/*.db-journal
