@@ -6,7 +6,7 @@
   @apply flex justify-center items-center text-slate-600 dark:text-slate-100 transition-colors outline-none rounded px-3 h-8 text-xs uppercase font-medium tracking-wider;
 
   &:hover,
-  &focus {
+  &:focus {
     @apply bg-slate-200 dark:bg-slate-800;
   }
 
@@ -20,7 +20,7 @@
   @apply bg-purple-600 text-white;
 
   &:hover,
-  &focus {
+  &:focus {
     @apply bg-purple-500;
   }
 
@@ -33,7 +33,7 @@
   @apply bg-cyan-500 text-white;
 
   &:hover,
-  &focus {
+  &:focus {
     @apply bg-cyan-400;
   }
 

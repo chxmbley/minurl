@@ -1,7 +1,7 @@
 .input {
   @apply border border-slate-200 dark:border-slate-700 px-6 h-12 rounded-full shadow-lg text-lg dark:bg-slate-800 dark:text-slate-100 outline-none transition-colors;
 
-  &focus {
+  &:focus {
     @apply border-cyan-500;
   }
 
