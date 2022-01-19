@@ -8,7 +8,7 @@
 1. Run `make setup` to install dependencies
 2. Run `make test` to run linters and test suite (optional)
 3. Run `make server` to build and start the server
-4. Visit **Minurl** at `localhost:8080`!
+4. Visit **Minurl** at `localhost:3000`!
 
 ## About 🖊️
 
