@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import { useCallback, useState } from 'react';
 import Ruler from '~components/Ruler';
-import NavBar from '~components/NavBar';
+import Page from '~components/Page';
 import MinifierForm from '~components/MinifierForm';
 import ErrorMessage from '~components/ErrorMessage';
 import { minifyUrl } from '~lib/api/minifyUrl';
@@ -30,9 +30,7 @@ const Home: FC = () => {
   }, []);
 
   return (
-    <div className="flex flex-col px-4 mx-auto min-h-screen max-w-screen-sm">
-      <NavBar />
-
+    <Page>
       <main className="flex-grow">
         <h2 className="text-5xl md:text-6xl mt-32 mb-8 text-slate-900 dark:text-white font-bold">
           make many
@@ -56,7 +54,7 @@ const Home: FC = () => {
       </main>
 
       <footer className="my-4 text-sm text-slate-500 text-center justify-self-end">made with 💜 in tx</footer>
-    </div>
+    </Page>
   );
 };
 
